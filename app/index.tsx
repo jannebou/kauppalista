@@ -44,20 +44,20 @@ const App = () => {
         setList([...list, response.data]);
         fetchData();
       })
-      .catch((error) => Alert.aler('Palvelin virhe', error));
+      .catch((error) => Alert.alert('Palvelin virhe', error));
   };
 
   const removeItem = (id) => {
     axios
       .delete(`${baseUrl}/${id}`)
       .then(() => fetchData())
-      .catch((error) => Alert.aler('Palvelin virhe', error));
+      .catch((error) => Alert.alert('Palvelin virhe', error));
   };
 
   return (
     <View style={styles.container}>
       <View style={styles.title}>
-        <Text style={styles.header}>Kauppalista</Text>
+        <Text style={styles.header}>🛒Kauppalista</Text>
         <Button color="dodgerblue" title="Päivitä" onPress={fetchData} />
       </View>
 
@@ -74,7 +74,7 @@ const App = () => {
 
       <FlatList
         data={list}
-        // keyExtractor={(item) => item.id.toString()}
+        keyExtractor={(item, index) => index.toString()}
         renderItem={({ item }) => (
           <View style={styles.listItem}>
             <Text style={styles.item}> {item.item} </Text>
@@ -92,8 +92,9 @@ const App = () => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     padding: 20,
+    paddingLeft: '10%',
+    paddingRight: '10%',
     backgroundColor: '#fff',
   },
   header: {
@@ -101,7 +102,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   title: {
-    paddingTop: 50,
+    paddingTop: 30,
     fontSize: 30,
     fontWeight: 'bold',
     // textAlign: 'center',
