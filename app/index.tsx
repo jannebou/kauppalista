@@ -93,8 +93,9 @@ const App = () => {
 const styles = StyleSheet.create({
   container: {
     padding: 20,
-    paddingLeft: '10%',
-    paddingRight: '10%',
+    paddingTop: '10%',
+    paddingLeft: '5%',
+    paddingRight: '5%',
     backgroundColor: '#fff',
   },
   header: {
